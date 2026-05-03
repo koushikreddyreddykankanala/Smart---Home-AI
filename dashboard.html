@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="SmartHome AI — voice-controlled home automation dashboard" />
+    <meta name="theme-color" content="#1A2E33" />
+    <!--
+    DEPLOYMENT CONFIG
+    If frontend is hosted separately, add before this file loads:
+    <script>window.SMARTHOME_BACKEND = "https://your-api.onrender.com";</script>
+  -->
+    <title>Smart Home Assistant</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <!-- ── LOADING ANIMATION ──────────────────────────────── -->
+    <div class="dashboard-loader" id="dashboardLoader">
+        <div class="loader-content">
+            <div class="loader-icon">
+                <i data-lucide="home"></i>
+                <div class="loader-spinner"></div>
+            </div>
+            <p class="loader-text">Initializing Smart Home...</p>
+        </div>
+    </div>
+
+    <!-- ── NAVBAR ──────────────────────────────── -->
+    <nav class="navbar" role="banner">
+        <div class="nav-left">
+            <a href="index.html" class="nav-home-link" title="Back to Home" onclick="sessionStorage.setItem('fromLanding', 'true')">
+                <i data-lucide="arrow-left" class="nav-back-icon"></i>
+            </a>
+            <i data-lucide="home" class="nav-logo"></i>
+            <span class="nav-title">SmartHome AI</span>
+        </div>
+        <div class="nav-right">
+            <span class="greeting" id="greeting" aria-live="polite">Hello, Guest 👋</span>
+            <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">
+                <i data-lucide="moon" id="themeIcon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ── MAIN LAYOUT ──────────────────────────── -->
+    <main class="layout" role="main">
+
+        <!-- ═══ LEFT COLUMN ═══ -->
+        <section class="dashboard" aria-labelledby="dashboard-heading">
+            <h2 class="section-title" id="dashboard-heading">
+                <i data-lucide="layout-grid"></i> Device Dashboard
+            </h2>
+
+            <!-- Weather widget -->
+            <div class="weather-card" id="weatherCard" aria-label="Current weather">
+                <div class="weather-icon" aria-hidden="true"><i data-lucide="cloud-sun"></i></div>
+                <div class="weather-info">
+                    <span id="weatherCity">--</span>
+                    <span id="weatherTemp" class="weather-temp">--°C</span>
+                    <span id="weatherDesc" class="weather-desc">Loading weather…</span>
+                </div>
+            </div>
+
+            <!-- Device grid -->
+            <div class="devices-grid" role="list" aria-label="Smart devices">
+
+                <div class="device-card" id="card-light" role="listitem">
+                    <div class="device-icon" aria-hidden="true"><i data-lucide="lightbulb" id="icon-light"></i>
+                    </div>
+                    <div class="device-info">
+                        <span class="device-name">Living Room Light</span>
+                        <span class="device-status" id="status-light" aria-live="polite">OFF</span>
+                    </div>
+                    <label class="toggle-switch" aria-label="Toggle light">
+                        <input type="checkbox" id="toggle-light" onchange="manualControl('light', this.checked)" />
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="device-card" id="card-fan" role="listitem">
+                    <div class="device-icon" aria-hidden="true"><i data-lucide="fan" id="icon-fan"></i></div>
+                    <div class="device-info">
+                        <span class="device-name">Ceiling Fan</span>
+                        <span class="device-status" id="status-fan" aria-live="polite">OFF</span>
+                    </div>
+                    <label class="toggle-switch" aria-label="Toggle fan">
+                        <input type="checkbox" id="toggle-fan" onchange="manualControl('fan', this.checked)" />
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="device-card" id="card-ac" role="listitem">
+                    <div class="device-icon" aria-hidden="true"><i data-lucide="snowflake" id="icon-ac"></i></div>
+                    <div class="device-info">
+                        <span class="device-name">Air Conditioner</span>
+                        <span class="device-status" id="status-ac" aria-live="polite">OFF</span>
+                    </div>
+                    <label class="toggle-switch" aria-label="Toggle AC">
+                        <input type="checkbox" id="toggle-ac" onchange="manualControl('ac', this.checked)" />
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="device-card" id="card-tv" role="listitem">
+                    <div class="device-icon" aria-hidden="true"><i data-lucide="tv" id="icon-tv"></i></div>
+                    <div class="device-info">
+                        <span class="device-name">Smart TV</span>
+                        <span class="device-status" id="status-tv" aria-live="polite">OFF</span>
+                    </div>
+                    <label class="toggle-switch" aria-label="Toggle TV">
+                        <input type="checkbox" id="toggle-tv" onchange="manualControl('tv', this.checked)" />
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+            </div><!-- /.devices-grid -->
+
+            <!-- Temperature control -->
+            <div class="temp-card" aria-label="AC temperature control">
+                <div style="display: flex; align-items: center; gap: 10px; width: 100%;">
+                    <i data-lucide="thermometer"></i>
+                    <span>AC Temp:</span>
+                    <span class="temp-value" id="tempDisplay" aria-live="polite">24°C</span>
+                </div>
+                <div class="temp-controls">
+                    <button class="temp-btn" onclick="adjustTemperature(-1)" aria-label="Decrease temperature">
+                        <i data-lucide="minus"></i>
+                    </button>
+                    <input type="range" min="16" max="30" value="24" id="tempSlider" oninput="setTemperature(this.value)"
+                        class="temp-slider" aria-label="Set AC temperature" />
+                    <button class="temp-btn" onclick="adjustTemperature(1)" aria-label="Increase temperature">
+                        <i data-lucide="plus"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ── SCENES ─────────────────────────── -->
+            <div class="scenes-section">
+                <h3 class="sub-title"><i data-lucide="sparkles"></i> Smart Scenes
+                </h3>
+                <div class="scenes-grid" role="group" aria-label="Scene shortcuts">
+                    <button class="scene-btn" onclick="activateScene('movie')" aria-label="Movie mode">
+                        <i data-lucide="clapperboard"></i><span>Movie</span>
+                    </button>
+                    <button class="scene-btn" onclick="activateScene('sleep')" aria-label="Sleep mode">
+                        <i data-lucide="moon"></i><span>Sleep</span>
+                    </button>
+                    <button class="scene-btn" onclick="activateScene('party')" aria-label="Party mode">
+                        <i data-lucide="party-popper"></i><span>Party</span>
+                    </button>
+                    <button class="scene-btn" onclick="activateScene('work')" aria-label="Work mode">
+                        <i data-lucide="briefcase"></i><span>Work</span>
+                    </button>
+                    <button class="scene-btn" onclick="activateScene('morning')" aria-label="Morning mode">
+                        <i data-lucide="sun"></i><span>Morning</span>
+                    </button>
+                </div>
+            </div>
+
+        </section><!-- /.dashboard -->
+
+        <!-- ═══ RIGHT COLUMN ═══ -->
+        <section class="assistant-panel" aria-labelledby="assistant-heading">
+            <h2 class="section-title" id="assistant-heading">
+                <i data-lucide="bot"></i> AI Assistant
+            </h2>
+
+            <!-- Name row -->
+            <div class="name-row">
+                <input type="text" id="userName" placeholder="Enter your name…" maxlength="30" aria-label="Your name" />
+                <button onclick="saveName()" aria-label="Save name">Save</button>
+            </div>
+
+            <!-- Chat window -->
+            <div class="chat-window" id="chatWindow" role="log" aria-label="Chat" aria-live="polite">
+                <div class="chat-msg bot">
+                    <i data-lucide="bot" class="msg-icon"></i>
+                    <span>Hi! Try saying "Movie mode", "It's too hot", or "Turn on the lights".</span>
+                </div>
+            </div>
+
+            <!-- Mic -->
+            <div class="mic-area">
+                <button class="mic-btn" id="micBtn" onclick="startListening()" aria-label="Start voice command">
+                    <i data-lucide="mic"></i>
+                </button>
+                <span class="mic-label" id="micLabel" aria-live="polite">Tap to speak</span>
+            </div>
+
+            <!-- NLP examples strip -->
+            <div class="nlp-hints" aria-label="Example commands">
+                <span class="hint-label">Try:</span>
+                <button class="hint-chip" onclick="quickCmd('It\'s too hot')">It's too hot</button>
+                <button class="hint-chip" onclick="quickCmd('Movie mode')">Movie mode</button>
+                <button class="hint-chip" onclick="quickCmd('I\'m feeling sleepy')">I'm sleepy</button>
+                <button class="hint-chip" onclick="quickCmd('Make it cooler')">Make it cooler</button>
+            </div>
+
+            <!-- Text input -->
+            <div class="text-cmd-row">
+                <input type="text" id="textCmd" placeholder="Or type a command…" aria-label="Type a command"
+                    onkeydown="if(event.key==='Enter') sendTextCommand()" />
+                <button onclick="sendTextCommand()" aria-label="Send">
+                    <i data-lucide="send"></i>
+                </button>
+            </div>
+
+            <!-- Tabbed bottom panel: history | insights -->
+            <div class="bottom-panel">
+                <div class="panel-tabs" role="tablist">
+                    <button class="panel-tab active" id="tab-history" role="tab" aria-selected="true"
+                        onclick="switchTab('history')">
+                        <i data-lucide="clock"></i> History
+                    </button>
+                    <button class="panel-tab" id="tab-insights" role="tab" aria-selected="false"
+                        onclick="switchTab('insights')">
+                        <i data-lucide="bar-chart-3"></i> Insights
+                    </button>
+                </div>
+
+                <!-- History tab -->
+                <div class="panel-content" id="pane-history" role="tabpanel">
+                    <div class="history-header">
+                        <button class="clear-btn" onclick="clearHistory()" aria-label="Clear history">Clear</button>
+                    </div>
+                    <ul class="history-list" id="historyList" aria-live="polite">
+                        <li class="history-empty">No commands yet.</li>
+                    </ul>
+                </div>
+
+                <!-- Insights tab -->
+                <div class="panel-content hidden" id="pane-insights" role="tabpanel">
+                    <div id="insightsPanel" class="insights-panel">
+                        <span class="text-muted">Loading insights…</span>
+                    </div>
+                </div>
+            </div>
+
+        </section><!-- /.assistant-panel -->
+    </main>
+
+    <!-- ── FOOTER ──────────────────────────────── -->
+    <footer class="footer" role="contentinfo">
+        SmartHome AI &copy; 2026 &nbsp;|&nbsp; AI Essentials Course Project
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Redirect to homepage on refresh (unless coming from landing page)
+        (function() {
+            const fromLanding = sessionStorage.getItem('fromLanding');
+            if (!fromLanding) {
+                window.location.href = 'index.html';
+            } else {
+                // Clear the flag after successful load
+                sessionStorage.removeItem('fromLanding');
+            }
+        })();
+        
+        /* Inline helpers that depend on script.js being loaded */
+        function quickCmd(text) {
+            document.getElementById("textCmd").value = text;
+            sendTextCommand();
+        }
+
+        function switchTab(name) {
+            ["history", "insights"].forEach(t => {
+                document.getElementById(`tab-${t}`).classList.toggle("active", t === name);
+                document.getElementById(`tab-${t}`).setAttribute("aria-selected", t === name);
+                document.getElementById(`pane-${t}`).classList.toggle("hidden", t !== name);
+            });
+            if (name === "insights") updateInsightsPanel();
+        }
+        
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

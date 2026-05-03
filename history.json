@@ -1,0 +1,97 @@
+[
+  {
+    "command": "control:ac:on",
+    "result": "ok",
+    "time": "2026-05-03T18:09:30"
+  },
+  {
+    "command": "make it cooler",
+    "result": "temperature",
+    "time": "2026-05-03T18:09:30"
+  },
+  {
+    "command": "control:ac:on",
+    "result": "ok",
+    "time": "2026-05-03T18:09:30"
+  },
+  {
+    "command": "make it cooler",
+    "result": "temperature",
+    "time": "2026-05-03T18:09:30"
+  },
+  {
+    "command": "control:ac:on",
+    "result": "ok",
+    "time": "2026-05-03T18:09:30"
+  },
+  {
+    "command": "control:ac:on",
+    "result": "ok",
+    "time": "2026-05-03T18:18:50"
+  },
+  {
+    "command": "control:ac:on",
+    "result": "ok",
+    "time": "2026-05-03T18:18:51"
+  },
+  {
+    "command": "control:ac:on",
+    "result": "ok",
+    "time": "2026-05-03T18:18:56"
+  },
+  {
+    "command": "control:ac:on",
+    "result": "ok",
+    "time": "2026-05-03T18:18:56"
+  },
+  {
+    "command": "control:ac:on",
+    "result": "ok",
+    "time": "2026-05-03T18:19:03"
+  },
+  {
+    "command": "control:ac:on",
+    "result": "ok",
+    "time": "2026-05-03T18:19:12"
+  },
+  {
+    "command": "control:fan:on",
+    "result": "ok",
+    "time": "2026-05-03T18:19:22"
+  },
+  {
+    "command": "control:ac:on",
+    "result": "ok",
+    "time": "2026-05-03T18:19:25"
+  },
+  {
+    "command": "control:ac:on",
+    "result": "ok",
+    "time": "2026-05-03T18:19:29"
+  },
+  {
+    "command": "control:ac:on",
+    "result": "ok",
+    "time": "2026-05-03T18:19:30"
+  },
+  {
+    "command": "control:ac:on",
+    "result": "ok",
+    "time": "2026-05-03T18:19:32"
+  },
+  {
+    "command": "control:ac:on",
+    "result": "ok",
+    "time": "2026-05-03T18:19:32"
+  },
+  {
+    "command": "control:ac:on",
+    "result": "ok",
+    "time": "2026-05-03T18:19:35"
+  },
+  {
+    "command": "control:ac:on",
+    "result": "ok",
+    "time": "2026-05-03T18:19:35"
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "light": false,
+  "fan": true,
+  "ac": true,
+  "tv": false,
+  "temperature": 18
+}

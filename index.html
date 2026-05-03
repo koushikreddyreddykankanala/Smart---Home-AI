@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="SmartHome AI — Control your home with voice, intelligence, and automation" />
+    <meta name="theme-color" content="#55A9A8" />
+    <title>SmartHome AI - Intelligent Home Automation</title>
+    <link rel="stylesheet" href="landing.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <!-- ── NAVIGATION ──────────────────────────────── -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i data-lucide="home" class="nav-icon"></i>
+                <span class="nav-title">SmartHome AI</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#about">About</a>
+                <a href="#devices">Devices</a>
+                <a href="dashboard.html" class="btn-primary">Open Dashboard</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ── HERO SECTION ──────────────────────────────── -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+        </div>
+        
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i data-lucide="sparkles"></i>
+                    <span>AI-Powered Home Control</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    Smart Home AI
+                    <span class="gradient-text">Assistant</span>
+                </h1>
+                
+                <p class="hero-subtitle">
+                    Control your home with voice, intelligence, and automation. 
+                    Experience the future of smart living with AI-powered device management.
+                </p>
+                
+                <div class="hero-cta">
+                    <a href="dashboard.html" class="btn btn-large btn-primary">
+                        <i data-lucide="arrow-right"></i>
+                        Get Started
+                    </a>
+                    <a href="#features" class="btn btn-large btn-secondary">
+                        <i data-lucide="play-circle"></i>
+                        Learn More
+                    </a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">4+</div>
+                        <div class="stat-label">Smart Devices</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">Smart Scenes</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Voice Control</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="device-showcase">
+                    <div class="device-card floating" style="--delay: 0s">
+                        <i data-lucide="lightbulb"></i>
+                        <span>Smart Lights</span>
+                    </div>
+                    <div class="device-card floating" style="--delay: 0.2s">
+                        <i data-lucide="fan"></i>
+                        <span>Ceiling Fan</span>
+                    </div>
+                    <div class="device-card floating" style="--delay: 0.4s">
+                        <i data-lucide="snowflake"></i>
+                        <span>AC Control</span>
+                    </div>
+                    <div class="device-card floating" style="--delay: 0.6s">
+                        <i data-lucide="tv"></i>
+                        <span>Smart TV</span>
+                    </div>
+                    <div class="center-hub">
+                        <i data-lucide="cpu"></i>
+                        <div class="pulse-ring"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── ABOUT SECTION ──────────────────────────────── -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">About the Project</span>
+                <h2 class="section-title">Intelligent Home Automation</h2>
+                <p class="section-subtitle">
+                    SmartHome AI is an advanced home automation system that combines artificial intelligence, 
+                    voice recognition, and smart automation to give you complete control over your living space.
+                </p>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i data-lucide="brain"></i>
+                    </div>
+                    <h3>AI-Powered Intelligence</h3>
+                    <p>Natural language processing understands your commands and learns your preferences over time.</p>
+                </div>
+                
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i data-lucide="zap"></i>
+                    </div>
+                    <h3>Instant Response</h3>
+                    <p>Real-time device control with zero latency. Your commands are executed immediately.</p>
+                </div>
+                
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i data-lucide="shield-check"></i>
+                    </div>
+                    <h3>Secure & Private</h3>
+                    <p>Your data stays local. No cloud dependencies for core functionality.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── FEATURES SECTION ──────────────────────────────── -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Features</span>
+                <h2 class="section-title">Everything You Need</h2>
+                <p class="section-subtitle">
+                    Powerful features designed to make your home smarter, safer, and more efficient.
+                </p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-lucide="mic"></i>
+                    </div>
+                    <h3>Voice Control</h3>
+                    <p>Control all your devices using natural voice commands. Just speak and it happens.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-lucide="brain"></i>
+                    </div>
+                    <h3>AI Understanding</h3>
+                    <p>Advanced NLP understands context and intent, not just keywords.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-lucide="zap"></i>
+                    </div>
+                    <h3>Smart Automation</h3>
+                    <p>Create custom automations based on time, temperature, or device states.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-lucide="globe"></i>
+                    </div>
+                    <h3>Remote Access</h3>
+                    <p>Control your home from anywhere with secure remote access.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-lucide="activity"></i>
+                    </div>
+                    <h3>Real-time Monitoring</h3>
+                    <p>Track device status, energy usage, and system health in real-time.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-lucide="cloud-sun"></i>
+                    </div>
+                    <h3>Weather Integration</h3>
+                    <p>Automatic climate control based on weather conditions and forecasts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── DEVICES SECTION ──────────────────────────────── -->
+    <section class="devices" id="devices">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Connected Ecosystem</span>
+                <h2 class="section-title">Your Smart Home Hub</h2>
+                <p class="section-subtitle">
+                    Control all your devices from one unified interface
+                </p>
+            </div>
+            
+            <div class="devices-showcase">
+                <div class="device-item" style="--delay: 0s">
+                    <div class="device-icon-large">
+                        <i data-lucide="lightbulb"></i>
+                    </div>
+                    <h4>Smart Lighting</h4>
+                    <p>Adjust brightness and color</p>
+                </div>
+                
+                <div class="device-item" style="--delay: 0.1s">
+                    <div class="device-icon-large">
+                        <i data-lucide="fan"></i>
+                    </div>
+                    <h4>Climate Control</h4>
+                    <p>Fans and ventilation</p>
+                </div>
+                
+                <div class="device-item" style="--delay: 0.2s">
+                    <div class="device-icon-large">
+                        <i data-lucide="snowflake"></i>
+                    </div>
+                    <h4>Air Conditioning</h4>
+                    <p>Temperature management</p>
+                </div>
+                
+                <div class="device-item" style="--delay: 0.3s">
+                    <div class="device-icon-large">
+                        <i data-lucide="tv"></i>
+                    </div>
+                    <h4>Entertainment</h4>
+                    <p>Smart TV control</p>
+                </div>
+                
+                <div class="device-item" style="--delay: 0.4s">
+                    <div class="device-icon-large">
+                        <i data-lucide="thermometer"></i>
+                    </div>
+                    <h4>Temperature</h4>
+                    <p>Climate monitoring</p>
+                </div>
+                
+                <div class="device-item" style="--delay: 0.5s">
+                    <div class="device-icon-large">
+                        <i data-lucide="sparkles"></i>
+                    </div>
+                    <h4>Smart Scenes</h4>
+                    <p>One-tap automation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── CTA SECTION ──────────────────────────────── -->
+    <section class="cta">
+        <div class="cta-bg">
+            <div class="gradient-orb orb-4"></div>
+            <div class="gradient-orb orb-5"></div>
+        </div>
+        
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Start Controlling Your Home Smarter Today</h2>
+                <p class="cta-subtitle">
+                    Experience the future of home automation with AI-powered intelligence
+                </p>
+                <a href="dashboard.html" class="btn btn-large btn-white">
+                    <i data-lucide="layout-dashboard"></i>
+                    Open Dashboard
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── FOOTER ──────────────────────────────── -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <i data-lucide="home"></i>
+                        <span>SmartHome AI</span>
+                    </div>
+                    <!-- <p>Built using Flask, JavaScript, and AI concepts</p> -->
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="#features">Features</a>
+                        <a href="#devices">Devices</a>
+                        <a href="dashboard.html">Dashboard</a>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <a href="#about">About</a>
+                        <a href="#features">Documentation</a>
+                        <a href="#devices">Support</a>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <a href="#">GitHub</a>
+                        <a href="#">Twitter</a>
+                        <a href="#">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 SmartHome AI. All rights reserved.</p>
+                <p>AI Essentials Course Project</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="landing.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
